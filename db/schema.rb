@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016113119) do
+ActiveRecord::Schema.define(:version => 20121016152259) do
 
   create_table "articles", :force => true do |t|
     t.string   "variety"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20121016113119) do
     t.string   "name",       :default => "匿名"
     t.string   "email"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "responses", :force => true do |t|
+    t.string   "name",       :default => "匿名"
+    t.string   "email"
+    t.text     "content"
+    t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

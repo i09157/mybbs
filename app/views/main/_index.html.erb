@@ -1,0 +1,69 @@
+#encoding: utf-8
+<br><hr>
+<p id="notice"><%=notice%></p>
+<p><%= link_to("新規スレッド", new_article_path) %></p>
+<% @articles.each do |article| %>
+ <div id = "article_<%= article.id %>">
+    <h2>
+      <%=article.id %>
+      <%=article.title %>
+      <%= link_to 'Edit', edit_article_path(article) %>
+    </h2>
+    <p>
+      <%= count = 1 %>
+      <%=article.name %>
+
+ 	    <%= simple_time(article.updated_at) %>
+ 	  </p>
+ 	  <p>
+ 	   <%=simple_format article.content %>
+ 	  </p>
+    <% article.responses.each do |response| %>
+
+     <p>
+      <%= count = count + 1 %>
+      <%=response.name %>
+ 	  	<%= simple_time(response.updated_at) %>
+ 	   </p>
+ 	   <p>
+ 	   	<%=simple_format response.content %>
+ 	   </p>
+
+		<% end %>
+<%= form_for(@response) do |f| %>
+     <% if @response.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
+
+      <ul>
+      <% @response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+     </div>
+    <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+
+    <%= f.hidden_field :article_id, :value => article.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%= link_to "top", "#"%>
+  <% end %>
+
+</div>
+<% end %>
