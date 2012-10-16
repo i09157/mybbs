@@ -1,2 +1,27 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+#encoding: utf-8
+<br><hr>
+<p id="notice"><%=notice%></p>
+<p><%= link_to("新規スレッド", new_article_path) %></p>
+<% @articles.each do |article| %>
+ <div id = "article_<%= article.id %>">
+    <h2>
+      <%=article.id %>
+      <%=article.title %>
+      <%= link_to 'Edit', edit_article_path(article) %>
+    </h2>
+    <p>
+      <%= count = 1 %>
+      <%=article.name %>
+
+ 	    <%= simple_time(article.updated_at) %>
+ 	  </p>
+ 	  <p>
+ 	   <%=simple_format article.content %>
+ 	  </p>
+
+
+  <%= link_to "top", "#"%>
+
+</div>
+
+<% end %>
