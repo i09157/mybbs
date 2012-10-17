@@ -1,4 +1,12 @@
+<div id = "body" >
 <%= form_for @article, :html => { :class => 'form-horizontal' } do |f| %>
+    <% if @article.errors.any? %>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <div class="control-group" >
     <%= f.label :variety, :class => 'control-label' %>
     <div class="controls">
@@ -20,13 +28,13 @@
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
+      <%= f.text_field :email, :size => 20,:class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
+      <%= f.text_area :content, :size => 20, :rows => 10, :class => 'text_area' %>
     </div>
   </div>
 
@@ -36,3 +44,4 @@
                 root_path, :class => 'btn' %>
   </div>
 <% end %>
+</div>

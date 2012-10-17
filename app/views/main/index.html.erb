@@ -1,7 +1,7 @@
 #encoding: utf-8
-<p id="notice"><%=notice%></p>
+<div id="notice"><%= notice %></div>
 <div id = "body">
-<p><%= button_to("新規スレッド", new_article_path) %></p>
+<p><%= button_to("Create Article", new_article_path) %></p>
 <p><%= link_to("新規スレッド", new_article_path) %></p>
 <br>
 <% @articles.each do |article| %>

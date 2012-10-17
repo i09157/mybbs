@@ -1,24 +1,21 @@
 <%- model_class = Article -%>
 <div class="page-header">
-  <h1> <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong>
-  <%= @article.title %></dt></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
-
-</dl>
-
- <dt><strong><%= model_class.human_attribute_name(:article_id) %>:</strong></dt>
-  <dd><%= @article.id %></dd>
-
+  <dt><strong><%= model_class.human_attribute_name(:variety) %>:</strong></dt>
+  <dd><%= @article.variety %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @article.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @article.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @article.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
   <dd><%= @article.content %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
-  <dd> <%= simple_time(@article.updated_at) %></dd>
+</dl>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               articles_path, :class => 'btn'  %>
