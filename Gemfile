@@ -19,6 +19,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -32,3 +33,4 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+gem 'will_paginate', '~> 3.0'

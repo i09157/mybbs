@@ -52,7 +52,7 @@ class ResponsesController < ApplicationController
       respond_to do |format|
         if @response.save
           session[:updated_at] = Time.now
-          format.html { redirect_to main_index_path, notice: 'Response was successfully created.' }
+          format.html { redirect_to @article, notice: 'Response was successfully created.' }
           format.json { render json: @response, status: :created, location: @response }
         else
         format.html { render action: "new"}

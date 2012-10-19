@@ -3,7 +3,9 @@ Mybbs::Application.routes.draw do
 
   get "main/index"
 
-  resources :articles
+  resources :articles do
+    resources :responses
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

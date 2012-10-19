@@ -25,6 +25,7 @@ class ResponsesController < ApplicationController
   # GET /responses/new
   # GET /responses/new.json
   def new
+
     @response = Response.new
     @response.name = session[:name] if session[:name]
     @response.email = session[:email] if session[:email]
@@ -42,6 +43,7 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
+    #    @article = Article.find(params[:id])
     session[:updated_at] = Time.now unless session[:updated_at]
     if Time.now - session[:updated_at] < 5
       redirect_to root_path,notice: '5秒待ってください'
@@ -53,7 +55,9 @@ class ResponsesController < ApplicationController
       respond_to do |format|
         if @response.save
           session[:updated_at] = Time.now
-          format.html { redirect_to main_index_path, notice: 'レスポンスが作成されました！' }
+           flash[:notice] = 'Tip was successfully updated.'
+          format.html { #redirect_to :controller=>'articles', :action => 'show', :id => @article.id
+                        redirect_to articles_path }
           format.json { render json: @response, status: :created, location: @response }
         else
         format.html { render action: "new"}
